@@ -10,6 +10,12 @@ A simple 2D platform-style game inspired by Sonic, built with Python and Pygame.
 - Score tracking and high-score display
 - Background music and sound effects
 
+## Preview
+
+This the preview of the game:
+
+![Sonic Game Preview](resources/preview.png)
+
 ## Requirements
 
 - Python 3.8+
@@ -56,4 +62,5 @@ GitHub: https://github.com/Halip26
 
 ## License
 
+This project is licensed under the MIT License. See the LICENSE file for details.
 This project is licensed under the MIT License. See the LICENSE file for details.
