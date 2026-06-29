@@ -32,10 +32,10 @@ bg_sound.play(-1)  # to play in loop, -1 is used as argument
 
 # load semuanya
 def load_image(
-        name,
-        sx = -1,
-        sy = -1,
-        colorkey = None,
+    name,
+    sx=-1,
+    sy=-1,
+    colorkey=None,
 ):
     fullname = os.path.join("resources", name)
     img = pygame.image.load(fullname)
@@ -44,19 +44,26 @@ def load_image(
         if colorkey == -1:
             colorkey = img.get_at((0, 0))
         img.set_colorkey(colorkey, RLEACCEL)
-    
+
     if sx != -1 or sy != -1:
         img = pygame.transform.scale(img, (sx, sy))
 
     return (img, img.get_rect())
 
 # load satu persatu
-def load_sprite_sheet(s_name, namex, namey, scx=-1, scy=-1,c_key=None,):
+def load_sprite_sheet(
+    s_name,
+    namex,
+    namey,
+    scx=-1,
+    scy=-1,
+    c_key=None,
+):
     fullname = os.path.join("resources", s_name)
     sh = pygame.image.load(fullname)
     sh = sh.convert()
 
-    sh_rect  = sh.get_rect()
+    sh_rect = sh.get_rect()
 
     sprites = []
 
