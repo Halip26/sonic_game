@@ -23,7 +23,12 @@ pygame.display.set_caption("Sonic Run")
 jump_sound = pygame.mixer.Sound("resources/jump.wav")
 die_sound = pygame.mixer.Sound("resources/die.wav")
 checkPoint_sound = pygame.mixer.Sound("resources/checkpoint.wav")
-bg_sound = pygame.mixer.Sound("resources/background_music.mp3")
+
+# add bg sound to play in loop'
+bg_sound = pygame.mixer.Sound("resources/bg_sound.mp3")
+bg_sound.set_volume(0.1)
+bg_sound.play(-1)  # to play in loop, -1 is used as argument
+
 
 # load semuanya
 def load_image(
