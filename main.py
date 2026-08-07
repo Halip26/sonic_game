@@ -50,6 +50,7 @@ def load_image(
 
     return (img, img.get_rect())
 
+
 # load satu persatu
 def load_sprite_sheet(
     s_name,
@@ -90,6 +91,7 @@ def load_sprite_sheet(
 
     return sprites, sprite_rect
 
+
 def gameover_display_message(rbtn_image, gmo_image):
     rbtn_rect = rbtn_image.get_rect()
     rbtn_rect.centerx = width_screen / 2
@@ -102,6 +104,7 @@ def gameover_display_message(rbtn_image, gmo_image):
     screen_layout_display.blit(rbtn_image, rbtn_rect)
     screen_layout_display.blit(gmo_image, gmo_rect)
 
+
 def extractDigits(num):
     if num > -1:
         d = []
@@ -109,18 +112,21 @@ def extractDigits(num):
         while num / 10 != 0:
             d.append(num % 10)
             num = int(num / 10)
-        
+
         d.append(num % 10)
         for i in range(len(d), 5):
             d.append(0)
         d.reverse()
         return d
 
+
 class sonic:
     def __init__(self, sx=-1, sy=-1):
         # disini adalah attributes
         self.imgs, self.rect = load_sprite_sheet("sonic.png", 5, 1, sx, sy, -1)
-        self.imgs1, self.rect1 = load_sprite_sheet("sonic_ducking.png", 2, 1, 59, sy, -1)
+        self.imgs1, self.rect1 = load_sprite_sheet(
+            "sonic_ducking.png", 2, 1, 59, sy, -1
+        )
         self.rect.bottom = int(0.98 * height_screen)
         self.rect.left = width_screen / 15
         self.image = self.imgs[0]
@@ -160,7 +166,7 @@ class sonic:
 
         elif self.ducking:
             if self.counter % 5 == 0:
-                self.index = (self. index + 1) % 2
+                self.index = (self.index + 1) % 2
         else:
             if self.counter % 5 == 0:
                 self.index = (self.index + 1) % 2 + 2
@@ -183,11 +189,12 @@ class sonic:
             if self.score % 100 == 0 and self.score != 0:
                 if pygame.mixer.get_init() != None:
                     checkPoint_sound.play()
-        
+
         self.counter = self.counter + 1
 
+
 class cactus(pygame.sprite.Sprite):
-    def __init__(self, speed=5, sx = -1, sy = -1):
+    def __init__(self, speed=5, sx=-1, sy=-1):
         pygame.sprite.Sprite.__init__(self, self.containers)
         self.imgs, self.rect = load_sprite_sheet("cactus-small.png", 3, 1, sx, sy, -1)
         self.rect.bottom = int(0.98 * height_screen)
@@ -203,6 +210,7 @@ class cactus(pygame.sprite.Sprite):
 
         if self.rect.right < 0:
             self.kill()
+
 
 class birds(pygame.sprite.Sprite):
     def __init__(self, speed=5, sx=-1, sy=-1):
@@ -223,7 +231,7 @@ class birds(pygame.sprite.Sprite):
     def draw(self):
         screen_layout_display.blit(self.image, self.rect)
 
-    def upadte(self):
+    def update(self):
         if self.counter % 10 == 0:
             self.index = (self.index + 1) % 2
         self.image = self.imgs[self.index]
@@ -232,15 +240,16 @@ class birds(pygame.sprite.Sprite):
         if self.rect.right < 0:
             self.kill()
 
+
 class Ground:
-    def __init__(self, speed = -5):
+    def __init__(self, speed=-5):
         self.image, self.rect = load_image("sonic_bg3.png", -1, -1, -1)
         self.image1, self.rect1 = load_image("sonic_bg3.png", -1, -1, -1)
         self.rect.bottom = height_screen
         self.rect1.bottom = height_screen
         self.rect1.left = self.rect.right
         self.speed = speed
-    
+
     def draw(self):
         screen_layout_display.blit(self.image, self.rect)
         screen_layout_display.blit(self.image1, self.rect1)
@@ -251,10 +260,10 @@ class Ground:
 
         if self.rect.right < 0:
             self.rect.left = self.rect1.right
-        
+
         if self.rect1.right < 0:
             self.rect1.left = self.rect.right
-    
+
 
 class Cloud(pygame.sprite.Sprite):
     def __init__(self, x, y):
@@ -275,9 +284,9 @@ class Cloud(pygame.sprite.Sprite):
 
 
 class Scoreboard:
-    def __init__(self, x = -1, y = -1):
+    def __init__(self, x=-1, y=-1):
         self.score = 0
-        self.scre_img, self.screrect = load_sprite_sheet(
+        self.screen_img, self.screrect = load_sprite_sheet(
             "numbers.png", 12, 1, 11, int(11 * 6 / 5), -1
         )
         self.image = pygame.Surface((55, int(11 * 6 / 5)))
@@ -298,7 +307,7 @@ class Scoreboard:
         score_digits = extractDigits(score)
         self.image.fill(bg_color)
         for s in score_digits:
-            self.image.blit(self.scre_img[s], self.screrect)
+            self.image.blit(self.screen_img[s], self.screrect)
             self.screrect.left += self.screrect.width
         self.screrect.left = 0
 
@@ -338,9 +347,8 @@ def introduction_screen():
                 screen_layout_display.blit(logo, l_rect)
             ado_sonic.draw()
 
-
             pygame.display.update()
-        
+
         time_clock.tick(FPS)
         if ado_sonic.jumping == False and ado_sonic.blinking == False:
             starting_game = True
@@ -354,7 +362,7 @@ def gameplay():
     g_exit = False
     gamer_Sonic = sonic(44, 47)
     new_grnd = Ground(-1 * gp)
-    score_boards =  Scoreboard()
+    score_boards = Scoreboard()
     highScore = Scoreboard(width_screen * 0.78)
     counter = 0
 
@@ -422,7 +430,7 @@ def gameplay():
                     last_end_obs.add(cactus(gp, 40, 40))
                 else:
                     for l in last_end_obs:
-                        if(
+                        if (
                             l.rect.right < width_screen * 0.7
                             and random.randrange(0, 50) == 10
                         ):
@@ -438,7 +446,7 @@ def gameplay():
             if len(skyClouds) < 5 and random.randrange(0, 300) == 10:
                 Cloud(
                     width_screen,
-                    random.randrange(height_screen // 5, height_screen // 2)
+                    random.randrange(height_screen // 5, height_screen // 2),
                 )
 
             gamer_Sonic.update()
