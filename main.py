@@ -243,8 +243,8 @@ class birds(pygame.sprite.Sprite):
 
 class Ground:
     def __init__(self, speed=-5):
-        self.image, self.rect = load_image("sonic_bg3.png", -1, -1, -1)
-        self.image1, self.rect1 = load_image("sonic_bg3.png", -1, -1, -1)
+        self.image, self.rect = load_image("road_nevada.png", -1, -1, -1)
+        self.image1, self.rect1 = load_image("road_nevada.png", -1, -1, -1)
         self.rect.bottom = height_screen
         self.rect1.bottom = height_screen
         self.rect1.left = self.rect.right
