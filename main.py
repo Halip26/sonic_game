@@ -18,7 +18,7 @@ highest_scores = 0
 
 screen_layout_display = pygame.display.set_mode(screen_size_display)
 time_clock = pygame.time.Clock()
-pygame.display.set_caption("Sonic Run")
+pygame.display.set_caption("Sonic Game by Mr. Halip")
 
 jump_sound = pygame.mixer.Sound("resources/jump.wav")
 die_sound = pygame.mixer.Sound("resources/die.wav")
