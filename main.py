@@ -123,7 +123,7 @@ def extractDigits(num):
 class sonic:
     def __init__(self, sx=-1, sy=-1):
         # disini adalah attributes
-        self.imgs, self.rect = load_sprite_sheet("sonic.png", 5, 1, sx, sy, -1)
+        self.imgs, self.rect = load_sprite_sheet("sonic_hd.png", 5, 1, sx, sy, -1)
         self.imgs1, self.rect1 = load_sprite_sheet(
             "sonic_ducking.png", 2, 1, 59, sy, -1
         )
@@ -196,7 +196,7 @@ class sonic:
 class cactus(pygame.sprite.Sprite):
     def __init__(self, speed=5, sx=-1, sy=-1):
         pygame.sprite.Sprite.__init__(self, self.containers)
-        self.imgs, self.rect = load_sprite_sheet("cactus-small.png", 3, 1, sx, sy, -1)
+        self.imgs, self.rect = load_sprite_sheet("cactus-big.png", 3, 1, sx, sy, -1)
         self.rect.bottom = int(0.98 * height_screen)
         self.rect.left = width_screen + self.rect.width
         self.image = self.imgs[random.randrange(0, 3)]
