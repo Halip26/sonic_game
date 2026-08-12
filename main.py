@@ -321,7 +321,7 @@ def introduction_screen():
     t_ground_rect.left = width_screen / 20
     t_ground_rect.bottom = height_screen
 
-    logo, l_rect = load_image("sonic_logo.png", 1200, 650, -1)
+    logo, l_rect = load_image("sonic_intro_bg.png", 1200, 650, -1)
     l_rect.centerx = width_screen * 0.6
     l_rect.centery = height_screen * 0.6
     while not starting_game:
